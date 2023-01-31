@@ -15,11 +15,11 @@ import android.widget.ImageView;
 public class ChairDetailFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
-    private static ChairData view;
+    private static ChairData itemData;
 
     public static ChairDetailFragment newInstance(ChairData v) {
         ChairDetailFragment fragment = new ChairDetailFragment();
-        view=v;
+        itemData=v;
         return fragment;
     }
 
@@ -32,13 +32,9 @@ public class ChairDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chair_detail, container, false);
-    }
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        View view= inflater.inflate(R.layout.fragment_chair_detail, container, false);
         ImageView imageView=view.findViewById(R.id.chair_detail_imageView);
-        //imageView.setImageResource(view.getChair_img());
+        imageView.setImageResource(itemData.getChair_img());
+        return view;
     }
 }

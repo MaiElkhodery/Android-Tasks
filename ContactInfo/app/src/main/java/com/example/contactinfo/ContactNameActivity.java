@@ -16,14 +16,16 @@ public class ContactNameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contact_name);
 
 
-        EditText name = findViewById(R.id.nameET);
+        EditText first_name = findViewById(R.id.firstNameET);
+        EditText last_name = findViewById(R.id.lastNameET);
         AppCompatButton nameButton = findViewById(R.id.sendNameButton);
 
         nameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),ContactNumActivity.class);
-                intent.putExtra("contact_name",name.getText().toString());
+                intent.putExtra(String.valueOf(R.string.contactName1),first_name.getText().toString());
+                intent.putExtra(String.valueOf(R.string.contactName2),last_name.getText().toString());
                 startActivity(intent);
             }
         });

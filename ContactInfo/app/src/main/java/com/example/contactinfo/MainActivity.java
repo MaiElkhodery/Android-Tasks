@@ -18,22 +18,24 @@ public class MainActivity extends AppCompatActivity {
 
         Timer timer = new Timer();
         SharedPreferences sp = getSharedPreferences("installedApp", MODE_PRIVATE);
-        String key = "";
-        String first_time = sp.getString("first_time", key);
+        String key = "first_time";
+        String value="";
+        String first_time = sp.getString(key,"");
 
-        if (first_time.equals("yes")) {
+        if (!first_time.equals("yes")) {
             timer.schedule(new TimerTask() {
                 @Override
                 public void run() {
                     Intent intent = new Intent(getApplicationContext(), ContactNameActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             }, 1000);
         }
         else{
             SharedPreferences.Editor editor = sp.edit();
-            key="yes";
-            editor.putString("first_time",key);
+            value="no";
+            editor.putString(key,value);
             editor.apply();
         }
     }

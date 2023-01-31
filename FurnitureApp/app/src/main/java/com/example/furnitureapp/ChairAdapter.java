@@ -19,13 +19,13 @@ import java.util.ArrayList;
 
 public class ChairAdapter extends RecyclerView.Adapter<ChairAdapter.Holder> {
     ArrayList<ChairData> dataset;
-    static Context context;
     ChairData currentItem;
+    private CategoryClickListener clickListener;
     @NonNull
     @Override
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chairs_data_design,parent,false);
-        return new ChairAdapter.Holder(view,currentItem);
+        return new ChairAdapter.Holder(view);
     }
 
     @Override
@@ -34,6 +34,13 @@ public class ChairAdapter extends RecyclerView.Adapter<ChairAdapter.Holder> {
         holder.imageView.setImageResource(currentItem.getChair_img());
         holder.textView1.setText(currentItem.getChair_name());
         holder.textView2.setText(currentItem.getChair_price());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickListener.onClickCategory(currentItem);
+            }
+        });
 
         Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(),R.anim.slide_in_left);
         holder.itemView.startAnimation(animation);
@@ -48,20 +55,11 @@ public class ChairAdapter extends RecyclerView.Adapter<ChairAdapter.Holder> {
         ImageView imageView;
         TextView textView1;
         TextView textView2;
-        public Holder(@NonNull View itemView,ChairData currentItem) {
+        public Holder(@NonNull View itemView) {
             super(itemView);
             imageView=itemView.findViewById(R.id.chair_imageView);
             textView1=itemView.findViewById(R.id.chair_textView1);
             textView2=itemView.findViewById(R.id.chair_textView2);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    ChairDetailFragment chairDetailFragment=ChairDetailFragment.newInstance(currentItem);
-                    ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.fragmentContainer,chairDetailFragment).commit();
-                }
-            });
         }
 
         public TextView getTextView1() {
@@ -77,8 +75,12 @@ public class ChairAdapter extends RecyclerView.Adapter<ChairAdapter.Holder> {
         }
     }
 
-    public ChairAdapter(ArrayList<ChairData> dataset,Context context){
+    public ChairAdapter(ArrayList<ChairData> dataset,CategoryClickListener categoryClickListener){
         this.dataset=dataset;
-        this.context=context;
+        clickListener=categoryClickListener;
+    }
+
+    public interface CategoryClickListener{
+        public void onClickCategory(ChairData chairData);
     }
 }

@@ -17,7 +17,8 @@ public class ContactNumActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contact_num);
 
         Intent received_intent = getIntent();
-        String received_data = received_intent.getStringExtra("contact_name");
+        String received_first_name = received_intent.getStringExtra(String.valueOf(R.string.contactName1));
+        String received_last_name = received_intent.getStringExtra(String.valueOf(R.string.contactName2));
 
         EditText number = findViewById(R.id.numberET);
         AppCompatButton numberButton = findViewById(R.id.sendDataButton);
@@ -27,7 +28,7 @@ public class ContactNumActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ContactsContract.Intents.Insert.ACTION);
                 intent.setType(ContactsContract.RawContacts.CONTENT_TYPE);
-                intent.putExtra(ContactsContract.Intents.Insert.NAME,received_data);
+                intent.putExtra(ContactsContract.Intents.Insert.NAME,received_first_name+" "+received_last_name);
                 intent.putExtra(ContactsContract.Intents.Insert.PHONE,number.getText());
                 startActivity(intent);
             }
