@@ -2,6 +2,7 @@ package com.example.shapes;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
@@ -26,6 +27,19 @@ public class DialogFragment extends androidx.fragment.app.DialogFragment {
     private OnPositiveButtonClick positiveListener;
     private OnNegativeButtonClick negativeListener;
 
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if(context instanceof OnPositiveButtonClick){
+            positiveListener = (OnPositiveButtonClick) context;
+        }
+        else
+            throw new RuntimeException("Please implement the positive listener");
+        if(context instanceof OnNegativeButtonClick){
+            negativeListener = (OnNegativeButtonClick) context;
+        }
+        else
+            throw new RuntimeException("Please implement the negative listener");
+    }
 
     public DialogFragment() {
         // Required empty public constructor
