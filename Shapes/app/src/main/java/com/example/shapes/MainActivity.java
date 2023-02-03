@@ -12,7 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity implements DialogFragment.OnNegativeButtonClick, DialogFragment.OnPositiveButtonClick {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,35 +22,32 @@ public class MainActivity extends AppCompatActivity implements DialogFragment.On
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         AppCompatButton exist_button = findViewById(R.id.exist_button);
+
         exist_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                AlertDialog.Builder dialogName = new AlertDialog.Builder(MainActivity.this);
 
-                AlertDialog.Builder dialogName = new AlertDialog.Builder(getApplicationContext());
                 dialogName.setTitle("Confirmation");
                 dialogName.setMessage("are you sure you wants to leave the app?");
+                dialogName.setIcon(R.drawable.warning_img);
 
                 dialogName.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         closeApp();
-                        dialogInterface.cancel();
                     }
                 });
 
                 dialogName.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
+
                     }
                 });
                 dialogName.create();
                 dialogName.show();
 
-
-//                DialogFragment dialogFragment = DialogFragment.newInstance("Confirmation",
-//                        "are you sure you wants to leave the app?",R.drawable.warning_img);
-//                dialogFragment.show(getSupportFragmentManager(),"dialogFragment");
             }
         });
 
@@ -69,15 +66,6 @@ public class MainActivity extends AppCompatActivity implements DialogFragment.On
         });
     }
 
-    @Override
-    public void onClickPositiveButton() {
-        this.finish();
-    }
-
-    @Override
-    public void onClickNegativeButton() {
-
-    }
     public void closeApp(){
         this.finish();
     }
