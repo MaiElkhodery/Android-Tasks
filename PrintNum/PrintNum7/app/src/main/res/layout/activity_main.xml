@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/TextView3"
+        style="@style/textViewStyle"
+        android:text="Print Numbers Without Divided By 3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resultTextView7" />
+
+    <TextView
+        android:id="@+id/resultTextView7"
+        style="@style/resultTextViewStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/from7TextView" />
+
+    <TextView
+        android:id="@+id/resultTextView3"
+        style="@style/resultTextViewStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/from3TextView" />
+
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/textViewStyle"
+        android:text="Print Numbers Divided By 7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/resultButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="44dp"
+        android:text="Click"
+        android:textColor="#FFFF"
+        android:background="@drawable/border"
+        android:backgroundTint="#18181E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resultTextView3" />
+
+    <EditText
+        android:id="@+id/endEditText7"
+        style="@style/editTextStyle"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:text="98"
+        app:layout_constraintStart_toEndOf="@+id/to7TextView"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/from7TextView"
+        style="@style/toAndFromStyle"
+        android:text="From"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <EditText
+        android:id="@+id/startEditText7"
+        style="@style/editTextStyle"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:text="1"
+        app:layout_constraintStart_toEndOf="@+id/from7TextView"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/to7TextView"
+        style="@style/toAndFromStyle"
+        android:layout_marginStart="11dp"
+        android:text="To"
+        app:layout_constraintEnd_toStartOf="@+id/endEditText7"
+        app:layout_constraintStart_toEndOf="@+id/startEditText7"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/to3TextView"
+        style="@style/toAndFromStyle"
+        android:layout_marginStart="11dp"
+        android:text="To"
+        app:layout_constraintEnd_toStartOf="@+id/endEditText3"
+        app:layout_constraintStart_toEndOf="@+id/startEditText3"
+        app:layout_constraintTop_toBottomOf="@+id/TextView3" />
+
+    <TextView
+        android:id="@+id/from3TextView"
+        style="@style/toAndFromStyle"
+        android:text="From"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextView3" />
+
+    <EditText
+        android:id="@+id/endEditText3"
+        style="@style/editTextStyle"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:text="30"
+        app:layout_constraintStart_toEndOf="@+id/to3TextView"
+        app:layout_constraintTop_toBottomOf="@+id/TextView3" />
+
+    <EditText
+        android:id="@+id/startEditText3"
+        style="@style/editTextStyle"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:inputType="numberSigned"
+        android:text="1"
+        app:layout_constraintStart_toEndOf="@+id/from3TextView"
+        app:layout_constraintTop_toBottomOf="@+id/TextView3" />
+</androidx.constraintlayout.widget.ConstraintLayout>
